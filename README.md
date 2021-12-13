@@ -42,6 +42,6 @@ Mot de passe : Celui que vous avez récuperer à l'étape précédente
 
 # JENKINS
 
-https://dev.to/andresfmoya/install-jenkins-using-docker-compose-4cab
-https://adamtheautomator.com/jenkins-docker/
-https://www.jenkins.io/doc/book/installing/docker/
+https://dev.to/andresfmoya/install-jenkins-using-docker-compose-4cab <br />
+https://adamtheautomator.com/jenkins-docker/ <br />
+https://www.jenkins.io/doc/book/installing/docker/ <br />

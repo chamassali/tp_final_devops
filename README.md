@@ -38,3 +38,10 @@ Mot de passe : Celui que vous avez récuperer à l'étape précédente
 # Utilisation de GitLab
 
 ## 1-  
+
+
+# JENKINS
+
+https://dev.to/andresfmoya/install-jenkins-using-docker-compose-4cab
+https://adamtheautomator.com/jenkins-docker/
+https://www.jenkins.io/doc/book/installing/docker/

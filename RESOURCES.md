@@ -4,7 +4,7 @@
 
 Nous avons d'abord essayez d'installer Jenkins avec ces deux premiers tutos :
 
-https://dev.to/andresfmoya/install-jenkins-using-docker-compose-4cab
+https://dev.to/andresfmoya/install-jenkins-using-docker-compose-4cab <br />
 https://adamtheautomator.com/jenkins-docker/
 
 Puis nous avons finalement décidé de suivre celui-ci : https://www.jenkins.io/doc/book/installing/docker/

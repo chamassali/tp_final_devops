@@ -41,8 +41,40 @@ Mot de passe : Celui que vous avez récuperer à l'étape précédente
 
 # Utilisation de GitLab
 
-## 1-  
+## 1-  Créer un nouveau Projet (dans notre cas ça sera tp-final-devops
 
+## 2-  Initialiser le repository :
+         -git init
+         -git add .
+         -git commit -m"Premier commit"
+         -git remote add origin git@gitlab.example.com:root/tp_final_devops.git (bien configurer ses clé ssh pour éviter de rentrer le mdp gitlab a chaque commit malheureusement nous avons eu un problème avec cette partie)
+         -git push -u origin master
+
+## 3-  Utilisation des Pipeline :
+
+Pour notre cas vu que le code est en PHP nous allons utiliser pour le "Test coverage parsing" ``phpunit --coverage-text --color=never (PHP) - ^\s*Lines:\s*\d+.\d+\%`` il faut ensuite sauvegarder les changements
+
+Ensuite il faut créer un fichier .gitlab-ci.yml à la racine de notre projet(pour se faire la documentation est disponible sur gitlab.com et aussi sur docs.gitlab.com)
+
+Exemple de ce que peux contenir .gitlab-ci.yml
+``
+image: grafikart/gitlab-ci:php
+
+before_script:
+-composer install
+
+services:
+-mysql
+
+variables:
+    MYSQL_DATABASE: test
+    MYSQL_ROOT_PASSWORD: root
+
+test:
+    script:
+    -composer test
+``
+Suite à ça il faut commit ce nouveau fichier et le push. Le Pipeline est donc créer, il ne reste plus qu'à le Run et il s'éxecutera a chaque fois qu'un commit sur le projet sera effectué.
 
 # JENKINS
 

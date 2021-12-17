@@ -58,7 +58,7 @@ Ensuite il faut créer un fichier .gitlab-ci.yml à la racine de notre projet(po
 
 Exemple de ce que peux contenir .gitlab-ci.yml
 
-``
+`
 image: grafikart/gitlab-ci:php
 
 before_script:
@@ -74,7 +74,7 @@ variables:
 test:
     script:
     -composer test
-``
+`
 
 Suite à ça il faut commit ce nouveau fichier et le push. Le Pipeline est donc créer, il ne reste plus qu'à le Run et il s'éxecutera a chaque fois qu'un commit sur le projet sera effectué.
 

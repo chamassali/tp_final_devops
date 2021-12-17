@@ -46,6 +46,69 @@ Mot de passe : Celui que vous avez récuperer à l'étape précédente
 
 # JENKINS
 
+Nous avons d'abord essayez d'installer Jenkins avec ces deux premiers tutos : <br /><br />
+
 https://dev.to/andresfmoya/install-jenkins-using-docker-compose-4cab <br />
 https://adamtheautomator.com/jenkins-docker/ <br />
+
+Puis nous avons finalement décidé de suivre celui-ci :
 https://www.jenkins.io/doc/book/installing/docker/ <br />
+
+Le tp a été réalisé sur une machine virtuelle linux ubuntu.
+
+#1 Télécharger Docker Linux sur ce lien
+https://docs.docker.com/engine/install/
+
+#2 Ouvrir un Terminal bash
+
+#3 Créer un réseau bridge dans docker avec la commande suivante : docker network create jenkins
+
+#4 Pour pouvoir exécuter les commandes docker à l'intérieur des noyaux jenkins, il faut installer docker:dind.
+Pour cela exécuter cette commande dans votre terminal :
+
+docker run \
+  --name jenkins-docker \
+  --rm \
+  --detach \
+  --privileged \
+  --network jenkins \
+  --network-alias docker \
+  --env DOCKER_TLS_CERTDIR=/certs \
+  --volume jenkins-docker-certs:/certs/client \
+  --volume jenkins-data:/var/jenkins_home \
+  --publish 2376:2376 \
+  docker:dind \
+  --storage-driver overlay2
+  
+  #5 Creer une Dockerfile et y écrire ceci :
+  
+  FROM jenkins/jenkins:2.319.1-jdk11
+USER root
+RUN apt-get update && apt-get install -y lsb-release
+RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+  https://download.docker.com/linux/debian/gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+  https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+RUN apt-get update && apt-get install -y docker-ce-cli
+USER jenkins
+RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
+
+#6 Build une nouvelle image docker grace au Dockerfile avec la commande : docker build -t myjenkins-blueocean:1.1 .
+
+#7 Lancer l'image avec la commande qui suit :
+
+ docker run \
+  --name jenkins-blueocean \
+  --rm \
+  --detach \
+  --network jenkins \
+  --env DOCKER_HOST=tcp://docker:2376 \
+  --env DOCKER_CERT_PATH=/certs/client \
+  --env DOCKER_TLS_VERIFY=1 \
+  --publish 8080:8080 \
+  --publish 50000:50000 \
+  --volume jenkins-data:/var/jenkins_home \
+  --volume jenkins-docker-certs:/certs/client:ro \
+  myjenkins-blueocean:1.1 

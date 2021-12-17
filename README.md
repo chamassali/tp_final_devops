@@ -1,6 +1,6 @@
 # projet_final_devops
 
-#Installation de GitLab
+# Installation de GitLab
 
 ## 1- Vérification des Versions :
 

@@ -131,5 +131,13 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
   --volume jenkins-docker-certs:/certs/client:ro \
   myjenkins-blueocean:1.1
   
-  #8 Accéder à http://localhost:8080 sur un navigateur
-  Un mot de passe va être demandé, pour le récupérer, aller sur la console où Jenkins est ouvert et copier le mot de passe généré automatiquement, ensuite le renseigner sur l'interface web Jenkins.
+#8 Accéder à http://localhost:8080 sur un navigateur
+Un mot de passe va être demandé, pour le récupérer, faire un docker ps dans une console, puis récupérer l'id de myjenkins.
+Ensuite faire un sudo docker logs containerId. Le mot de pass apparaitra dans la console.
+Rentrer le mot de passe dans l'interface web.
+
+#9 Choisir ensuite l'option installer les pluggins suggérés
+
+#10 Créer ensuite le 1er utilisateur administrateur avec les informations voulues
+
+Voila, Jenkins et installé et configuré !

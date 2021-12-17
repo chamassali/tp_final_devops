@@ -1,4 +1,11 @@
-#1 Partie
+#1 Partie GitLab :
+
+Comment faire une intégration continue : https://youtu.be/URcMBXjIr24
+
+Comprendre l'intégration continue : https://youtu.be/ws1qGuFMYlc
+
+Ressources écrite pour l'intégration Continue : 
+Documentation GitLab.com et docs.gitlab-ci.com
 
 #2 Partie JENKINS : 
 

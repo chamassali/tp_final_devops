@@ -26,14 +26,18 @@ docker-compose up -d
 Cette commande permet de voir ce qui se passe dans les logs
 docker-compose logs -f
 
-## 6- Récuperer le mdp pour accéder au gitlab
+## 6- Redirection vers github.example.com
+Dans le fichier /etc/hosts, ajouter la ligne suivante pour avoir accès à l'interface de gitlab sur l'adresse github.example.com:
+163.172.241.102 gitlab.example.com
+
+## 7- Récuperer le mdp pour accéder au gitlab
 docker-compose exec web grep 'Password:' /etc/gitlab/initial_root_password
 
-## 7- Accéder à l'interface via gitlab.example.com
+## 8- Accéder à l'interface via gitlab.example.com
 Se connecter avec l'identifiant : root
 Mot de passe : Celui que vous avez récuperer à l'étape précédente
 
-## 6- Fin de l'Installation
+## 9- Fin de l'Installation
 
 # Utilisation de GitLab
 

@@ -59,6 +59,24 @@ Le tp a été réalisé sur une machine virtuelle linux ubuntu.
 #1 Télécharger Docker Linux sur ce lien
 https://docs.docker.com/engine/install/
 
+ sudo apt-get update
+
+ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+ 
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
 #2 Ouvrir un Terminal bash
 
 #3 Créer un réseau bridge dans docker avec la commande suivante : docker network create jenkins
@@ -111,4 +129,7 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
   --publish 50000:50000 \
   --volume jenkins-data:/var/jenkins_home \
   --volume jenkins-docker-certs:/certs/client:ro \
-  myjenkins-blueocean:1.1 
+  myjenkins-blueocean:1.1
+  
+  #8 Accéder à http://localhost:8080 sur un navigateur
+  Un mot de passe va être demandé, pour le récupérer, aller sur la console où Jenkins est ouvert et copier le mot de passe généré automatiquement, ensuite le renseigner sur l'interface web Jenkins.
